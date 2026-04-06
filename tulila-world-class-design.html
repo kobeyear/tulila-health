@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Tulila — Menopause Care That Actually Works</title>
   <meta name="description" content="Doctor-prescribed hormone therapy delivered to your door. Join 50,000+ women who chose to feel like themselves again.">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -47,6 +51,71 @@
       font-family: 'Inter', system-ui, sans-serif;
       font-feature-settings: 'kern' 1, 'liga' 1;
       text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Mobile Optimizations */
+    @media (max-width: 768px) {
+      /* Larger touch targets */
+      button, a[role="button"] {
+        min-height: 48px;
+        min-width: 48px;
+      }
+      
+      /* Better mobile typography */
+      h1 { font-size: 2.5rem; line-height: 1.1; }
+      h2 { font-size: 2rem; line-height: 1.2; }
+      h3 { font-size: 1.5rem; line-height: 1.3; }
+      
+      /* Mobile-friendly spacing */
+      .mobile-px { padding-left: 1rem; padding-right: 1rem; }
+      .mobile-py { padding-top: 2rem; padding-bottom: 2rem; }
+      
+      /* Better mobile forms */
+      input, select {
+        font-size: 16px; /* Prevents zoom on iOS */
+        min-height: 48px;
+      }
+      
+      /* Mobile-optimized cards */
+      .mobile-card {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        border-radius: 1rem;
+      }
+      
+      /* Smooth scrolling for anchor links */
+      html { scroll-behavior: smooth; }
+      
+      /* Optimize tap highlights */
+      * {
+        -webkit-tap-highlight-color: rgba(124, 58, 237, 0.1);
+        -webkit-touch-callout: none;
+      }
+      
+      /* Better mobile animations */
+      .mobile-optimized {
+        transition: transform 0.1s ease-out, background-color 0.2s ease;
+      }
+      
+      /* Improve mobile loading */
+      img {
+        loading: lazy;
+      }
+      
+      /* Mobile-friendly scrolling */
+      body {
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    /* Tablet optimizations */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
     }
     
     h1, h2, h3, h4, h5, h6 { 
@@ -236,18 +305,25 @@
   <!-- FLOATING HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="header">
     <div class="glass-card border-0 border-b border-white/20">
-      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" class="font-serif text-2xl font-bold text-gray-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+        <a href="#" class="font-serif text-xl sm:text-2xl font-bold text-gray-900">
           Tulila<span class="text-purple-600">.</span>
         </a>
         
-        <div class="hidden md:flex items-center gap-4 text-sm">
+        <div class="hidden lg:flex items-center gap-4 text-sm">
           <div class="flex text-purple-500 text-xs">★★★★★</div>
           <span class="text-gray-700 font-medium">4.9/5 • 50,000+ patients</span>
         </div>
         
-        <a href="#assessment" class="glass-button text-purple-700 font-semibold px-6 py-3 rounded-full text-sm hover:text-purple-800 transition">
-          Get Started
+        <!-- Mobile: Show small rating -->
+        <div class="flex md:hidden items-center text-xs text-gray-600">
+          <div class="flex text-purple-500 text-xs mr-1">★★★★★</div>
+          <span>4.9/5</span>
+        </div>
+        
+        <a href="#assessment" class="glass-button text-purple-700 font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm hover:text-purple-800 transition">
+          <span class="hidden sm:inline">Get Started</span>
+          <span class="sm:hidden">Start</span>
         </a>
       </div>
     </div>
@@ -259,44 +335,45 @@
       <div class="aurora-bg"></div>
     </div>
     
-    <div class="container mx-auto px-6 relative z-10">
-      <div class="flex gap-8 py-20 lg:py-32 items-center justify-center flex-col">
+    <div class="container mx-auto px-4 sm:px-6 relative z-10">
+      <div class="flex gap-6 sm:gap-8 py-16 sm:py-20 lg:py-32 items-center justify-center flex-col">
         
         <!-- Badge -->
         <div class="fade-in">
-          <button class="glass-button text-purple-700 px-5 py-3 rounded-full text-sm font-medium inline-flex items-center gap-4">
-            When doctors say "it's just aging"
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button class="glass-button text-purple-700 px-3 sm:px-5 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium inline-flex items-center gap-2 sm:gap-4">
+            <span class="hidden sm:inline">When doctors say "it's just aging"</span>
+            <span class="sm:hidden">Doctors say "it's just aging"</span>
+            <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </button>
         </div>
 
         <!-- Main Heading -->
-        <div class="flex gap-4 flex-col text-center fade-in">
-          <h1 class="text-5xl md:text-7xl max-w-4xl tracking-tighter font-regular">
+        <div class="flex gap-3 sm:gap-4 flex-col text-center fade-in">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl max-w-4xl tracking-tighter font-regular px-2">
             <span class="text-gray-900">Menopause care that's</span>
-            <div class="word-container md:pb-4 md:pt-1">
+            <div class="word-container pb-2 sm:pb-4 pt-1">
               <span id="animated-word" class="animated-word font-semibold text-purple-600"></span>
             </div>
           </h1>
-          <p class="text-lg md:text-xl leading-relaxed tracking-tight text-gray-700 max-w-3xl mx-auto">
+          <p class="text-base sm:text-lg md:text-xl leading-relaxed tracking-tight text-gray-700 max-w-3xl mx-auto px-4">
             Doctor-prescribed hormone therapy delivered to your door. Join 50,000+ women who chose to 
             feel like themselves again. <strong class="text-gray-900">No more dismissive doctors. No more suffering in silence.</strong>
           </p>
         </div>
 
         <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in">
-          <a href="#assessment" class="inline-flex items-center justify-center gap-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 px-8 py-4 text-lg font-semibold rounded-full transition shadow-luxury hover:shadow-2xl transform hover:scale-105 cursor-pointer">
-            Take Free Assessment
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center fade-in w-full max-w-lg px-4">
+          <a href="#assessment" class="inline-flex items-center justify-center gap-3 sm:gap-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 px-6 sm:px-8 py-4 sm:py-4 text-base sm:text-lg font-semibold rounded-full transition shadow-luxury hover:shadow-2xl transform active:scale-95 sm:hover:scale-105 cursor-pointer min-h-[48px] w-full sm:w-auto">
+            <span>Take Free Assessment</span>
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
           </a>
-          <a href="tel:+1-555-TULILA" class="glass-button text-purple-700 px-8 py-4 text-lg font-semibold rounded-full inline-flex items-center justify-center gap-4 cursor-pointer">
-            Talk to a provider
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <a href="tel:+1-555-TULILA" class="glass-button text-purple-700 px-6 sm:px-8 py-4 text-base sm:text-lg font-semibold rounded-full inline-flex items-center justify-center gap-3 sm:gap-4 cursor-pointer min-h-[48px] w-full sm:w-auto">
+            <span>Talk to a provider</span>
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
             </svg>
           </a>
@@ -742,13 +819,13 @@
   </section>
 
   <!-- ASSESSMENT SECTION -->
-  <section id="assessment" class="bg-purple-50 py-24 px-4">
+  <section id="assessment" class="bg-purple-50 py-12 sm:py-24 px-4">
     <div class="max-w-3xl mx-auto text-center">
-      <div class="bg-white rounded-3xl p-8 shadow-luxury">
-        <h2 class="font-serif text-4xl font-bold text-gray-900 mb-6">
+      <div class="bg-white rounded-xl sm:rounded-3xl p-4 sm:p-8 shadow-luxury">
+        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
           Free Menopause Assessment
         </h2>
-        <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+        <p class="text-base sm:text-lg md:text-xl text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto px-2">
           Take our 2-minute assessment to discover personalized treatment options for your menopause journey.
         </p>
         
@@ -768,9 +845,9 @@
           
           <!-- Step 1: Age -->
           <div id="step-1" class="assessment-step">
-            <h3 class="text-2xl font-semibold text-gray-900 mb-8">What is your current age?</h3>
-            <div class="space-y-4">
-              <button onclick="selectAge('35-40')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
+            <h3 class="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-6 sm:mb-8">What is your current age?</h3>
+            <div class="space-y-3 sm:space-y-4">
+              <button onclick="selectAge('35-40')" class="w-full p-4 sm:p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-base sm:text-lg min-h-[48px] active:scale-95">
                 35-40 years
               </button>
               <button onclick="selectAge('41-45')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
@@ -1130,6 +1207,27 @@
     // Initialize
     updateProgress();
     showStep(1);
+
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Prevent zoom on iOS when focusing inputs
+    document.addEventListener('touchstart', function() {}, true);
+    
+    // Add mobile-specific styles to buttons
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+      if (!button.classList.contains('mobile-optimized')) {
+        button.classList.add('mobile-optimized', 'min-h-[48px]', 'active:scale-95');
+      }
+    });
   </script>
 
   <!-- FOOTER -->
