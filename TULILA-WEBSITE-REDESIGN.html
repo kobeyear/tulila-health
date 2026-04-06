@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tulila — Finally, healthcare that understands you</title>
+  <meta name="description" content="Doctor-led hormone therapy for menopause. When your doctor says 'it's just stress,' we actually listen.">
+  <meta property="og:title" content="Tulila — Finally, healthcare that understands you">
+  <meta property="og:description" content="Doctor-led hormone therapy for menopause. When your doctor says 'it's just stress,' we actually listen.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tulila.health">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              sage: '#4A6741',
+              'sage-light': '#6B8A62', 
+              coral: '#E07A5F',
+              'coral-light': '#E89984',
+              ivory: '#FAF7F2',
+              pearl: '#F8F6F3',
+              'dusty-rose': '#D4A574',
+              charcoal: '#2D3436',
+              warm: '#8B7355',
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          borderRadius: {
+            pill: '800px',
+          },
+          boxShadow: {
+            soft: '0 4px 24px rgba(0,0,0,0.06)',
+            elevated: '0 8px 32px rgba(0,0,0,0.10)',
+            glow: '0 0 30px rgba(74, 103, 65, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; scrollbar-width: none; }
+    html::-webkit-scrollbar { display: none; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: #2D3436; background: #FAF7F2; -webkit-font-smoothing: antialiased; }
+    .hero-gradient {
+      background: linear-gradient(135deg, #4A6741 0%, #6B8A62 25%, #8B7355 50%, #D4A574 75%, #FAF7F2 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero-gradient::before {
+      content: 'finally understood';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem; font-weight: 300;
+      color: rgba(255,255,255,0.08);
+      letter-spacing: 0.1em; white-space: nowrap;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+    .glass-nav { background: rgba(250,247,242,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(74,103,65,0.1); }
+    .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .video-container { aspect-ratio: 16/9; background: linear-gradient(45deg, #4A6741, #6B8A62); border-radius: 1rem; overflow: hidden; position: relative; }
+    .video-placeholder { display: flex; align-items: center; justify-content: center; height: 100%; background: rgba(0,0,0,0.3); }
+    .trust-badge { transition: all 0.3s ease; }
+    .trust-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+    .symptom-card { transition: all 0.3s ease; border: 2px solid transparent; }
+    .symptom-card:hover { border-color: #4A6741; background: rgba(74,103,65,0.05); transform: translateY(-2px); }
+    .dr-james-intro { background: linear-gradient(135deg, rgba(74,103,65,0.05) 0%, rgba(224,122,95,0.05) 100%); border: 1px solid rgba(74,103,65,0.1); }
+  </style>
+</head>
+<body class="bg-brand-ivory">
+
+  <!-- ========== HEADER / NAV ========== -->
+  <header class="glass-nav fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="font-serif text-2xl font-bold text-brand-sage tracking-wide">Tulila<span class="text-brand-coral">.</span></a>
+      <!-- Trust Indicator -->
+      <div class="hidden md:flex items-center gap-2 text-xs text-brand-warm">
+        <div class="flex text-brand-coral">
+          <i class="fas fa-star text-xs"></i>
+          <i class="fas fa-star text-xs"></i>
+          <i class="fas fa-star text-xs"></i>
+          <i class="fas fa-star text-xs"></i>
+          <i class="fas fa-star text-xs"></i>
+        </div>
+        <span class="font-medium">4.9/5 from 10,000+ women</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <div class="hidden lg:flex items-center gap-8 text-sm text-brand-sage">
+          <a href="#how-it-works" class="hover:text-brand-coral transition font-medium">How It Works</a>
+          <a href="#treatments" class="hover:text-brand-coral transition font-medium">Treatment Options</a>
+          <a href="#providers" class="hover:text-brand-coral transition font-medium">Our Providers</a>
+        </div>
+        <a href="#assessment" class="bg-brand-coral text-white text-sm font-semibold px-6 py-3 rounded-pill hover:bg-brand-coral-light transition shadow-soft">
+          Talk to Dr. James
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-gradient text-center text-white pt-32 pb-24 px-4 relative z-10">
+    <div class="max-w-4xl mx-auto">
+      <!-- Viral Hook Headline -->
+      <div class="fade-in">
+        <p class="text-sm mb-4 opacity-90 max-w-2xl mx-auto">
+          When your doctor says "it's just stress," but you know something's wrong
+        </p>
+        <h1 class="font-serif text-4xl md:text-6xl font-bold leading-tight mb-6">
+          Finally, healthcare that <span class="italic underline decoration-brand-coral decoration-4">understands</span> you
+        </h1>
+        <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed opacity-95">
+          Doctor-led hormone therapy for women who are tired of being dismissed. 
+          <strong>No waiting rooms. No "just deal with it." Just care that works.</strong>
+        </p>
+      </div>
+      
+      <!-- Dr. James Video Introduction -->
+      <div class="dr-james-intro rounded-3xl p-8 max-w-3xl mx-auto mb-8 fade-in" style="animation-delay: 0.3s;">
+        <div class="flex items-center gap-6">
+          <div class="video-container w-40 h-40 flex-shrink-0">
+            <div class="video-placeholder">
+              <div class="text-center text-white">
+                <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-3">
+                  <i class="fas fa-play text-xl"></i>
+                </div>
+                <p class="text-xs font-medium">Meet Dr. James</p>
+              </div>
+            </div>
+          </div>
+          <div class="text-left text-brand-sage">
+            <h3 class="text-xl font-bold mb-2">"Hi, I'm Dr. James"</h3>
+            <p class="text-sm leading-relaxed mb-4">
+              "I've helped thousands of women navigate menopause over 20 years. If you're here, you're probably experiencing changes that feel overwhelming. You're not alone, and you're definitely not imagining things."
+            </p>
+            <button class="bg-brand-sage text-white px-6 py-2 rounded-pill text-sm font-semibold hover:bg-brand-sage-light transition">
+              <i class="fas fa-comments mr-2"></i>Start Our Conversation
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Proof Bar -->
+      <div class="flex flex-wrap justify-center items-center gap-8 text-sm opacity-85">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-heart text-brand-coral"></i>
+          <span>10,000+ women helped</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-shield-check text-brand-coral"></i>
+          <span>Licensed specialists</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-truck-fast text-brand-coral"></i>
+          <span>Delivered to 50 states</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-clock text-brand-coral"></i>
+          <span>24/7 support included</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HYPER-SPECIFIC SYMPTOMS (Viral Content Connection) ========== -->
+  <section class="bg-white py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-sage mb-4">
+          Which of these feels like <span class="text-brand-coral">your life right now</span>?
+        </h2>
+        <p class="text-lg text-brand-warm max-w-2xl mx-auto">
+          Select what resonates most with your daily experience
+        </p>
+      </div>
+
+      <!-- Hyper-Specific Symptom Cards -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+        <div class="symptom-card bg-brand-pearl rounded-2xl p-6 cursor-pointer" data-symptom="insomnia">
+          <div class="text-2xl mb-3">🌙</div>
+          <h4 class="font-semibold text-brand-sage mb-2">"It's 2:47 AM and I'm wide awake again"</h4>
+          <p class="text-sm text-brand-warm">You went to bed exhausted, but your mind won't stop racing</p>
+        </div>
+        
+        <div class="symptom-card bg-brand-pearl rounded-2xl p-6 cursor-pointer" data-symptom="rage">
+          <div class="text-2xl mb-3">😤</div>
+          <h4 class="font-semibold text-brand-sage mb-2">"I'm angry about everything and nothing"</h4>
+          <p class="text-sm text-brand-warm">The smallest things set you off, and you don't recognize yourself</p>
+        </div>
+        
+        <div class="symptom-card bg-brand-pearl rounded-2xl p-6 cursor-pointer" data-symptom="brain-fog">
+          <div class="text-2xl mb-3">🧠</div>
+          <h4 class="font-semibold text-brand-sage mb-2">"I can't remember what I walked into this room for"</h4>
+          <p class="text-sm text-brand-warm">Your brain feels wrapped in cotton wool</p>
+        </div>
+        
+        <div class="symptom-card bg-brand-pearl rounded-2xl p-6 cursor-pointer" data-symptom="hot-flashes">
+          <div class="text-2xl mb-3">🔥</div>
+          <h4 class="font-semibold text-brand-sage mb-2">"I'm having hot flashes in a board meeting"</h4>
+          <p class="text-sm text-brand-warm">Professional situations become survival mode</p>
+        </div>
+        
+        <div class="symptom-card bg-brand-pearl rounded-2xl p-6 cursor-pointer" data-symptom="dismissal">
+          <div class="text-2xl mb-3">🩺</div>
+          <h4 class="font-semibold text-brand-sage mb-2">"My doctor said it's just stress"</h4>
+          <p class="text-sm text-brand-warm">But you know this isn't normal aging</p>
+        </div>
+        
+        <div class="symptom-card bg-brand-pearl rounded-2xl p-6 cursor-pointer" data-symptom="multiple">
+          <div class="text-2xl mb-3">📝</div>
+          <h4 class="font-semibold text-brand-sage mb-2">"I'm dealing with multiple symptoms"</h4>
+          <p class="text-sm text-brand-warm">It feels like your body is betraying you</p>
+        </div>
+      </div>
+
+      <!-- Validation Message -->
+      <div class="text-center bg-brand-sage/10 rounded-2xl p-8 max-w-3xl mx-auto">
+        <h3 class="font-serif text-2xl font-bold text-brand-sage mb-4">You're not imagining things.</h3>
+        <p class="text-lg text-brand-warm leading-relaxed mb-6">
+          What you're experiencing is real, common, and treatable. The average woman suffers for 
+          <strong>7 years</strong> before getting proper menopause care. You don't have to.
+        </p>
+        <a href="#assessment" class="inline-block bg-brand-coral text-white font-semibold px-8 py-4 rounded-pill hover:bg-brand-coral-light transition shadow-soft text-lg">
+          Talk to Dr. James About Your Symptoms
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DR. JAMES ASSESSMENT INTRODUCTION ========== -->
+  <section id="assessment" class="bg-brand-sage py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <!-- Dr. James Video -->
+        <div>
+          <div class="video-container mb-6 shadow-elevated">
+            <div class="video-placeholder">
+              <div class="text-center text-white">
+                <div class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
+                  <i class="fas fa-play text-2xl"></i>
+                </div>
+                <p class="font-medium">Dr. James will guide you through this</p>
+                <p class="text-sm opacity-75">Click to start your assessment</p>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="inline-flex items-center gap-2 bg-white/10 rounded-pill px-4 py-2 text-white text-sm">
+              <i class="fas fa-shield-check"></i>
+              <span>HIPAA compliant & secure</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Assessment Introduction -->
+        <div class="text-white">
+          <h2 class="font-serif text-3xl md:text-4xl font-bold leading-tight mb-6">
+            Let Dr. James guide you to the right treatment
+          </h2>
+          
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-brand-coral rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-white text-xs"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1">Comprehensive symptom evaluation</h4>
+                <p class="text-sm opacity-85">Dr. James will ask about your specific symptoms and health history</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-brand-coral rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-white text-xs"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1">Personalized treatment recommendations</h4>
+                <p class="text-sm opacity-85">Get a customized plan based on your unique situation</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-brand-coral rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-white text-xs"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-1">Licensed specialist review</h4>
+                <p class="text-sm opacity-85">Board-certified providers review everything before treatment</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white/10 rounded-2xl p-6 mb-8">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-full bg-brand-coral/20 flex items-center justify-center">
+                <i class="fas fa-clock text-brand-coral"></i>
+              </div>
+              <div>
+                <p class="font-semibold">Takes 5-7 minutes</p>
+                <p class="text-sm opacity-75">Most women find it helpful just to talk through their symptoms</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="w-full bg-brand-coral text-brand-sage font-bold text-lg py-4 rounded-pill hover:bg-brand-coral-light transition shadow-soft">
+            Start Assessment with Dr. James
+          </button>
+          
+          <p class="text-center text-sm opacity-75 mt-4">
+            Free assessment • No commitment • Secure & private
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TREATMENT OPTIONS (Enhanced) ========== -->
+  <section id="treatments" class="bg-brand-ivory py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-xs text-brand-warm uppercase tracking-wider mb-4 font-medium">Evidence-Based Treatment</p>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-sage mb-4">
+          The right treatment for <span class="text-brand-coral">where you are</span> right now
+        </h2>
+        <p class="text-lg text-brand-warm max-w-2xl mx-auto">
+          Our specialists prescribe FDA-approved and bioidentical therapies recommended by the Menopause Society
+        </p>
+      </div>
+
+      <!-- Treatment Cards -->
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <!-- Essential HRT -->
+        <div class="bg-white rounded-3xl overflow-hidden shadow-soft border border-brand-sage/10 relative">
+          <div class="absolute top-4 left-4 bg-brand-coral text-white text-xs font-bold px-3 py-1 rounded-pill">
+            Most Popular
+          </div>
+          <div class="p-8">
+            <div class="text-4xl mb-4">🌿</div>
+            <h3 class="font-serif text-xl font-bold text-brand-sage mb-2">Essential HRT</h3>
+            <div class="mb-6">
+              <span class="text-3xl font-bold text-brand-sage">$89</span>
+              <span class="text-brand-warm">/month</span>
+            </div>
+            <ul class="space-y-3 text-sm text-brand-warm mb-8">
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-brand-sage mt-0.5"></i>
+                <span>Estradiol + Progesterone</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-brand-sage mt-0.5"></i>
+                <span>FDA-approved formulations</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-brand-sage mt-0.5"></i>
+                <span>Provider consultations included</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-brand-sage mt-0.5"></i>
+                <span>Free shipping & 24/7 support</span>
+              </li>
+            </ul>
+            <button class="w-full bg-brand-sage text-white font-semibold py-3 rounded-pill hover:bg-brand-sage-light transition">
+              Choose Essential
+            </button>
+          </div>
+        </div>
+
+        <!-- Complete HRT -->
+        <div class="bg-white rounded-3xl overflow-hidden shadow-soft border border-brand-sage/10">
+          <div class="p-8">
+            <div class="text-4xl mb-4">🌸</div>
+            <h3 class="font-serif text-xl font-bold text-brand-sage mb-2">Complete HRT</h3>
+            <div class="mb-6">
+              <span class="text-3xl font-bold text-brand-sage">$129</span>
+              <span class="text-brand-warm">/month</span>
+            </div>
+            <ul class="space-y-3 text-sm text-brand-warm mb-8">
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-brand-sage mt-0.5"></i>
+                <span>Everything in Essential</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-brand-sage mt-0.5"></i>
+                <span>Compounded bioidentical options</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-brand-sage mt-0.5"></i>
+                <span>Monthly provider check-ins</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-brand-sage mt-0.5"></i>
+                <span>Personalized dosing</span>
+              </li>
+            </ul>
+            <button class="w-full bg-brand-coral text-white font-semibold py-3 rounded-pill hover:bg-brand-coral-light transition">
+              Choose Complete
+            </button>
+          </div>
+        </div>
+
+        <!-- Complete + Testosterone -->
+        <div class="bg-white rounded-3xl overflow-hidden shadow-soft border border-brand-sage/10">
+          <div class="p-8">
+            <div class="text-4xl mb-4">💪</div>
+            <h3 class="font-serif text-xl font-bold text-brand-sage mb-2">Complete + Testosterone</h3>
+            <div class="mb-6">
+              <span class="text-3xl font-bold text-brand-sage">$169</span>
+              <span class="text-brand-warm">/month</span>
+            </div>
+            <ul class="space-y-3 text-sm text-brand-warm mb-8">
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-brand-sage mt-0.5"></i>
+                <span>Full hormone formulary</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-brand-sage mt-0.5"></i>
+                <span>Low-dose testosterone</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-brand-sage mt-0.5"></i>
+                <span>Priority provider access</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-brand-sage mt-0.5"></i>
+                <span>Comprehensive lab coordination</span>
+              </li>
+            </ul>
+            <button class="w-full bg-brand-sage text-white font-semibold py-3 rounded-pill hover:bg-brand-sage-light transition">
+              Choose Complete+
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Money Back Guarantee -->
+      <div class="bg-white rounded-3xl p-8 text-center shadow-soft border border-brand-coral/20">
+        <div class="w-16 h-16 bg-brand-coral/10 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-shield-check text-brand-coral text-xl"></i>
+        </div>
+        <h3 class="font-serif text-2xl font-bold text-brand-sage mb-3">90-Day Money Back Guarantee</h3>
+        <p class="text-brand-warm max-w-2xl mx-auto">
+          We're confident you'll feel better. If you don't see meaningful improvement in 90 days, 
+          we'll refund your money—no questions asked.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROVIDERS (Enhanced with Dr. James) ========== -->
+  <section id="providers" class="bg-white py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-sage mb-4">
+          Meet the team that <span class="text-brand-coral">actually listens</span>
+        </h2>
+        <p class="text-lg text-brand-warm max-w-2xl mx-auto">
+          Board-certified specialists who understand menopause isn't just "getting older"
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <!-- Dr. James (AI Guide) -->
+        <div class="text-center">
+          <div class="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden shadow-soft border-4 border-brand-sage/20">
+            <div class="w-full h-full bg-gradient-to-br from-brand-sage to-brand-sage-light flex items-center justify-center">
+              <i class="fas fa-user-doctor text-white text-3xl"></i>
+            </div>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-brand-sage mb-2">Dr. James</h3>
+          <p class="text-brand-coral font-medium text-sm mb-2">Your Assessment Guide</p>
+          <p class="text-sm text-brand-warm">Guides you through your symptoms and health history to ensure our specialists have everything they need</p>
+        </div>
+
+        <!-- Real Provider 1 -->
+        <div class="text-center">
+          <div class="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden shadow-soft border-4 border-brand-sage/20">
+            <img src="images/doctor_sarah_1775365949074.png" alt="Dr. Sarah Chen" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-xl font-bold text-brand-sage mb-2">Dr. Sarah Chen</h3>
+          <p class="text-brand-coral font-medium text-sm mb-2">Board Certified OB-GYN</p>
+          <p class="text-sm text-brand-warm">Johns Hopkins • 15+ years specializing in menopause medicine</p>
+        </div>
+
+        <!-- Real Provider 2 -->
+        <div class="text-center">
+          <div class="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden shadow-soft border-4 border-brand-sage/20">
+            <img src="images/doctor_rachel_1775365965728.png" alt="Dr. Rachel Torres" class="w-full h-full object-cover">
+          </div>
+          <h3 class="font-serif text-xl font-bold text-brand-sage mb-2">Dr. Rachel Torres</h3>
+          <p class="text-brand-coral font-medium text-sm mb-2">Menopause Society Certified</p>
+          <p class="text-sm text-brand-warm">UCLA • Specialized training in hormone therapy</p>
+        </div>
+      </div>
+
+      <!-- Credentials -->
+      <div class="grid md:grid-cols-4 gap-6 text-center">
+        <div class="trust-badge bg-brand-pearl rounded-2xl p-6">
+          <div class="w-12 h-12 bg-brand-sage/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-certificate text-brand-sage"></i>
+          </div>
+          <h4 class="font-semibold text-brand-sage text-sm mb-1">Board Certified</h4>
+          <p class="text-xs text-brand-warm">OB-GYN specialists</p>
+        </div>
+        <div class="trust-badge bg-brand-pearl rounded-2xl p-6">
+          <div class="w-12 h-12 bg-brand-sage/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-graduation-cap text-brand-sage"></i>
+          </div>
+          <h4 class="font-semibold text-brand-sage text-sm mb-1">Menopause Training</h4>
+          <p class="text-xs text-brand-warm">Specialized education</p>
+        </div>
+        <div class="trust-badge bg-brand-pearl rounded-2xl p-6">
+          <div class="w-12 h-12 bg-brand-sage/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-stethoscope text-brand-sage"></i>
+          </div>
+          <h4 class="font-semibold text-brand-sage text-sm mb-1">Licensed</h4>
+          <p class="text-xs text-brand-warm">All 50 states</p>
+        </div>
+        <div class="trust-badge bg-brand-pearl rounded-2xl p-6">
+          <div class="w-12 h-12 bg-brand-sage/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-heart text-brand-sage"></i>
+          </div>
+          <h4 class="font-semibold text-brand-sage text-sm mb-1">Patient-First</h4>
+          <p class="text-xs text-brand-warm">Your goals matter</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SOCIAL PROOF (Patient Stories) ========== -->
+  <section class="bg-brand-sage py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16 text-white">
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">
+          "When my doctor said it was <em class="not-italic text-brand-coral">just stress</em>, 
+          Tulila actually listened."
+        </h2>
+        <p class="text-lg opacity-85">Real stories from women who got their lives back</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white/10 backdrop-blur rounded-3xl p-8">
+          <div class="flex items-center gap-1 text-brand-coral mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote class="text-white text-lg leading-relaxed mb-6">
+            "I spent 3 years thinking I was losing my mind. Brain fog, no sleep, anxiety out of nowhere. 
+            My GP put me on antidepressants. Tulila put me on HRT. Within 6 weeks I felt like myself again."
+          </blockquote>
+          <cite class="text-brand-coral font-semibold">Patricia M., verified patient</cite>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur rounded-3xl p-8">
+          <div class="flex items-center gap-1 text-brand-coral mb-4">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote class="text-white text-lg leading-relaxed mb-6">
+            "Hot flashes gone. Sleeping through the night. My husband said 'you're back.' I cried. 
+            This should be the standard of care for every woman going through this."
+          </blockquote>
+          <cite class="text-brand-coral font-semibold">Linda S., verified patient</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <section class="bg-brand-ivory py-20 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-sage mb-6">
+        You don't have to suffer in silence anymore
+      </h2>
+      <p class="text-lg text-brand-warm mb-8 leading-relaxed">
+        Join thousands of women who chose to take control of their menopause journey. 
+        Start with a free assessment with Dr. James.
+      </p>
+      
+      <div class="bg-white rounded-3xl p-8 shadow-soft mb-8">
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-brand-sage">5-7</div>
+            <div class="text-sm text-brand-warm">minutes</div>
+          </div>
+          <div class="w-px h-12 bg-brand-sage/20"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-brand-sage">Free</div>
+            <div class="text-sm text-brand-warm">assessment</div>
+          </div>
+          <div class="w-px h-12 bg-brand-sage/20"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-brand-sage">24/7</div>
+            <div class="text-sm text-brand-warm">support</div>
+          </div>
+        </div>
+        
+        <button class="w-full bg-brand-coral text-white font-bold text-lg py-4 rounded-pill hover:bg-brand-coral-light transition shadow-soft">
+          Start Free Assessment with Dr. James
+        </button>
+        
+        <p class="text-sm text-brand-warm mt-4">
+          <i class="fas fa-shield-check text-brand-sage mr-1"></i>
+          Secure & confidential • No commitment required
+        </p>
+      </div>
+
+      <div class="flex items-center justify-center gap-8 text-sm text-brand-warm">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-star text-brand-coral"></i>
+          <span>4.9/5 patient rating</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-users text-brand-coral"></i>
+          <span>10,000+ women helped</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-clock text-brand-coral"></i>
+          <span>Same-week treatment</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-brand-charcoal py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-10">
+        <div>
+          <a href="#" class="font-serif text-2xl font-bold text-white">Tulila<span class="text-brand-coral">.</span></a>
+          <p class="text-sm text-white/60 mt-3 max-w-xs">
+            Finally, healthcare that understands you. 
+            Doctor-led menopause care delivered to your door.
+          </p>
+          <p class="text-xs text-white/40 mt-4">help@tulila.health</p>
+        </div>
+        <div class="flex flex-wrap gap-x-8 gap-y-2 text-sm text-white/60">
+          <a href="#" class="hover:text-white transition">How It Works</a>
+          <a href="#" class="hover:text-white transition">Treatment Options</a>
+          <a href="#" class="hover:text-white transition">Our Providers</a>
+          <a href="#" class="hover:text-white transition">Patient Reviews</a>
+          <a href="#" class="hover:text-white transition">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition">Terms of Service</a>
+        </div>
+      </div>
+      
+      <div class="border-t border-white/10 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-xs text-white/30">
+            &copy; 2026 Tulila. All rights reserved. Licensed providers in 50 states.
+          </p>
+          <div class="flex items-center gap-4">
+            <div class="flex items-center gap-1 text-brand-coral text-xs">
+              <i class="fas fa-shield-check"></i>
+              <span>HIPAA Compliant</span>
+            </div>
+            <div class="flex items-center gap-1 text-brand-coral text-xs">
+              <i class="fas fa-lock"></i>
+              <span>SSL Secured</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Symptom card selection
+    document.querySelectorAll('.symptom-card').forEach(card => {
+      card.addEventListener('click', () => {
+        // Remove active state from all cards
+        document.querySelectorAll('.symptom-card').forEach(c => c.classList.remove('border-brand-sage', 'bg-brand-sage/5'));
+        // Add active state to clicked card
+        card.classList.add('border-brand-sage', 'bg-brand-sage/5');
+        // Scroll to assessment
+        document.getElementById('assessment').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Add scroll-triggered animations
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.trust-badge, .symptom-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "tulila-health",
+  "version": "1.0.0",
+  "description": "Tulila Health - Menopause care that actually works",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'No build step required'",
+    "start": "echo 'Static site'"
+  }
+}
