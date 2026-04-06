@@ -743,91 +743,233 @@
 
   <!-- ASSESSMENT SECTION -->
   <section id="assessment" class="bg-purple-50 py-24 px-4">
-    <div class="max-w-4xl mx-auto text-center">
+    <div class="max-w-3xl mx-auto text-center">
       <div class="bg-white rounded-3xl p-8 shadow-luxury">
         <h2 class="font-serif text-4xl font-bold text-gray-900 mb-6">
           Free Menopause Assessment
         </h2>
-        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
           Take our 2-minute assessment to discover personalized treatment options for your menopause journey.
         </p>
         
-        <div class="text-left max-w-2xl mx-auto">
-          <div class="space-y-6">
-            <!-- Question 1 -->
-            <div>
-              <label class="block text-lg font-semibold text-gray-900 mb-3">What is your current age?</label>
-              <select class="w-full p-4 border border-gray-300 rounded-xl text-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
-                <option value="">Select your age range</option>
-                <option value="35-40">35-40 years</option>
-                <option value="41-45">41-45 years</option>
-                <option value="46-50">46-50 years</option>
-                <option value="51-55">51-55 years</option>
-                <option value="56-60">56-60 years</option>
-                <option value="60+">60+ years</option>
-              </select>
-            </div>
-
-            <!-- Question 2 -->
-            <div>
-              <label class="block text-lg font-semibold text-gray-900 mb-3">Are you currently experiencing menopause symptoms?</label>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label class="flex items-center p-4 border border-gray-300 rounded-xl cursor-pointer hover:bg-purple-50 hover:border-purple-300">
-                  <input type="radio" name="symptoms" value="yes" class="mr-3 w-5 h-5 text-purple-600">
-                  <span class="text-lg">Yes, I have symptoms</span>
-                </label>
-                <label class="flex items-center p-4 border border-gray-300 rounded-xl cursor-pointer hover:bg-purple-50 hover:border-purple-300">
-                  <input type="radio" name="symptoms" value="no" class="mr-3 w-5 h-5 text-purple-600">
-                  <span class="text-lg">No symptoms yet</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Question 3 -->
-            <div>
-              <label class="block text-lg font-semibold text-gray-900 mb-3">Which symptoms are you experiencing? (Select all that apply)</label>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-purple-50">
-                  <input type="checkbox" class="mr-3 w-5 h-5 text-purple-600">
-                  <span>Hot flashes</span>
-                </label>
-                <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-purple-50">
-                  <input type="checkbox" class="mr-3 w-5 h-5 text-purple-600">
-                  <span>Night sweats</span>
-                </label>
-                <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-purple-50">
-                  <input type="checkbox" class="mr-3 w-5 h-5 text-purple-600">
-                  <span>Sleep issues</span>
-                </label>
-                <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-purple-50">
-                  <input type="checkbox" class="mr-3 w-5 h-5 text-purple-600">
-                  <span>Mood changes</span>
-                </label>
-                <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-purple-50">
-                  <input type="checkbox" class="mr-3 w-5 h-5 text-purple-600">
-                  <span>Low energy</span>
-                </label>
-                <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-purple-50">
-                  <input type="checkbox" class="mr-3 w-5 h-5 text-purple-600">
-                  <span>Brain fog</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="pt-6">
-              <button onclick="alert('Assessment submitted! A provider will contact you within 24 hours.')" class="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white font-bold text-xl py-5 rounded-full hover:from-purple-700 hover:to-purple-800 transition shadow-luxury transform hover:scale-105">
-                Continue Assessment →
+        <!-- Animated Progress Bar -->
+        <div class="flex items-center justify-center gap-6 relative mb-12">
+          <div class="w-2 h-2 rounded-full bg-white relative z-10" id="progress-dot-1"></div>
+          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-2"></div>
+          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-3"></div>
+          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-4"></div>
+          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-5"></div>
+          
+          <!-- Purple progress overlay -->
+          <div id="progress-bar" class="absolute left-0 top-1/2 transform -translate-y-1/2 h-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full transition-all duration-700 ease-out" style="width: 24px; margin-left: -8px;"></div>
+        </div>
+        
+        <!-- Question Container -->
+        <div class="text-center max-w-xl mx-auto">
+          
+          <!-- Step 1: Age -->
+          <div id="step-1" class="assessment-step">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-8">What is your current age?</h3>
+            <div class="space-y-4">
+              <button onclick="selectAge('35-40')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
+                35-40 years
               </button>
-              <p class="text-sm text-gray-500 mt-4 text-center">
+              <button onclick="selectAge('41-45')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
+                41-45 years
+              </button>
+              <button onclick="selectAge('46-50')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
+                46-50 years
+              </button>
+              <button onclick="selectAge('51-55')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
+                51-55 years
+              </button>
+              <button onclick="selectAge('56-60')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
+                56-60 years
+              </button>
+              <button onclick="selectAge('60+')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
+                60+ years
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Symptoms -->
+          <div id="step-2" class="assessment-step hidden">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-8">Are you currently experiencing menopause symptoms?</h3>
+            <div class="grid grid-cols-1 gap-4">
+              <button onclick="selectSymptoms('yes')" class="p-6 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer">
+                <div class="text-lg font-semibold text-gray-900 mb-2">Yes, I have symptoms</div>
+                <div class="text-gray-600">I'm experiencing menopause symptoms and need relief</div>
+              </button>
+              <button onclick="selectSymptoms('no')" class="p-6 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer">
+                <div class="text-lg font-semibold text-gray-900 mb-2">No symptoms yet</div>
+                <div class="text-gray-600">I want to prepare for menopause proactively</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Most Bothersome -->
+          <div id="step-3" class="assessment-step hidden">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-8">What's your most bothersome symptom?</h3>
+            <div class="space-y-4">
+              <button onclick="selectBothersome('hot-flashes')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
+                🔥 Hot flashes & night sweats
+              </button>
+              <button onclick="selectBothersome('sleep')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
+                😴 Sleep problems
+              </button>
+              <button onclick="selectBothersome('mood')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
+                😔 Mood changes & anxiety
+              </button>
+              <button onclick="selectBothersome('energy')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
+                ⚡ Low energy & brain fog
+              </button>
+              <button onclick="selectBothersome('other')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
+                🌸 Other symptoms
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 4: Previous Treatment -->
+          <div id="step-4" class="assessment-step hidden">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-8">Have you tried hormone therapy before?</h3>
+            <div class="grid grid-cols-1 gap-4">
+              <button onclick="selectTreatment('never')" class="p-6 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer">
+                <div class="text-lg font-semibold text-gray-900 mb-2">Never tried it</div>
+                <div class="text-gray-600">I'm new to hormone therapy</div>
+              </button>
+              <button onclick="selectTreatment('yes-helped')" class="p-6 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer">
+                <div class="text-lg font-semibold text-gray-900 mb-2">Yes, and it helped</div>
+                <div class="text-gray-600">Looking for continued or improved treatment</div>
+              </button>
+              <button onclick="selectTreatment('yes-no-help')" class="p-6 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer">
+                <div class="text-lg font-semibold text-gray-900 mb-2">Yes, but it didn't help</div>
+                <div class="text-gray-600">Need a different approach</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 5: Contact Info -->
+          <div id="step-5" class="assessment-step hidden">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-8">Get your personalized treatment plan</h3>
+            <div class="space-y-6 text-left">
+              <div>
+                <label class="block text-lg font-medium text-gray-900 mb-2">Email Address</label>
+                <input type="email" id="email" class="w-full p-4 border-2 border-gray-300 rounded-xl text-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="your@email.com">
+              </div>
+              <div>
+                <label class="block text-lg font-medium text-gray-900 mb-2">Phone Number (Optional)</label>
+                <input type="tel" id="phone" class="w-full p-4 border-2 border-gray-300 rounded-xl text-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500" placeholder="(555) 123-4567">
+              </div>
+              
+              <button onclick="submitAssessment()" class="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white font-bold text-xl py-5 rounded-full hover:from-purple-700 hover:to-purple-800 transition shadow-luxury transform hover:scale-105 mt-8">
+                Get My Treatment Plan →
+              </button>
+              
+              <p class="text-sm text-gray-500 text-center mt-4">
                 🔒 Your information is secure and HIPAA compliant
               </p>
             </div>
           </div>
+
+          <!-- Back Button -->
+          <div id="back-button-container" class="mt-8 hidden">
+            <button onclick="goBack()" class="px-6 py-3 text-purple-700 bg-purple-100 font-semibold rounded-full hover:bg-purple-200 transition">
+              ← Back
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    let currentStep = 1;
+    let assessmentData = {};
+
+    function updateProgress() {
+      const progressBar = document.getElementById('progress-bar');
+      const dots = document.querySelectorAll('[id^="progress-dot-"]');
+      
+      // Update dots
+      dots.forEach((dot, index) => {
+        if (index + 1 <= currentStep) {
+          dot.className = 'w-2 h-2 rounded-full bg-white relative z-10';
+        } else {
+          dot.className = 'w-2 h-2 rounded-full bg-gray-300 relative z-10';
+        }
+      });
+      
+      // Update progress bar width with animation
+      const widths = ['24px', '60px', '96px', '132px', '168px'];
+      progressBar.style.width = widths[currentStep - 1] || '24px';
+    }
+
+    function showStep(stepNumber) {
+      document.querySelectorAll('.assessment-step').forEach(step => step.classList.add('hidden'));
+      document.getElementById(`step-${stepNumber}`).classList.remove('hidden');
+      
+      const backButton = document.getElementById('back-button-container');
+      if (stepNumber > 1) {
+        backButton.classList.remove('hidden');
+      } else {
+        backButton.classList.add('hidden');
+      }
+    }
+
+    function goToNextStep() {
+      currentStep++;
+      updateProgress();
+      showStep(currentStep);
+    }
+
+    function goBack() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateProgress();
+        showStep(currentStep);
+      }
+    }
+
+    function selectAge(age) {
+      assessmentData.age = age;
+      goToNextStep();
+    }
+
+    function selectSymptoms(hasSymptoms) {
+      assessmentData.hasSymptoms = hasSymptoms;
+      goToNextStep();
+    }
+
+    function selectBothersome(symptom) {
+      assessmentData.bothersomeSymptom = symptom;
+      goToNextStep();
+    }
+
+    function selectTreatment(treatment) {
+      assessmentData.previousTreatment = treatment;
+      goToNextStep();
+    }
+
+    function submitAssessment() {
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      
+      if (!email) {
+        alert('Please enter your email address');
+        return;
+      }
+      
+      assessmentData.email = email;
+      assessmentData.phone = phone;
+      
+      alert('Assessment completed! A licensed provider will contact you within 24 hours with your personalized treatment plan.');
+    }
+
+    // Initialize
+    updateProgress();
+    showStep(1);
+  </script>
 
   <!-- FOOTER -->
   <footer class="bg-gray-900 py-20 px-4">
