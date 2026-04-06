@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tulila Animated Hero - Navy & Gold Theme</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              50: '#f0f1f5',
+              100: '#d8dceb',
+              200: '#b6c0d9',
+              300: '#8a9dc2',
+              400: '#6077a6',
+              500: '#45578d',
+              600: '#384675',
+              700: '#2f3961',
+              800: '#2a3152',
+              900: '#262d47'
+            },
+            gold: {
+              50: '#fffef7',
+              100: '#fffbeb',
+              200: '#fef3c7',
+              300: '#fde68a',
+              400: '#fcd34d',
+              500: '#fbbf24',
+              600: '#f59e0b',
+              700: '#d97706',
+              800: '#b45309',
+              900: '#92400e'
+            },
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', Georgia, serif; }
+    
+    @keyframes slideInFromBelow {
+      0% {
+        opacity: 0;
+        transform: translateY(150px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideOutToAbove {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-150px);
+      }
+    }
+    
+    @keyframes slideOutToBelow {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(150px);
+      }
+    }
+    
+    .animate-word-enter {
+      animation: slideInFromBelow 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    
+    .animate-word-exit-up {
+      animation: slideOutToAbove 0.4s ease-in forwards;
+    }
+    
+    .animate-word-exit-down {
+      animation: slideOutToBelow 0.4s ease-in forwards;
+    }
+    
+    .word-container {
+      position: relative;
+      height: 1.2em;
+      overflow: hidden;
+    }
+    
+    .animated-word {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  
+  <!-- Animated Hero Section -->
+  <section class="w-full bg-gradient-to-br from-navy-700 via-navy-800 to-navy-900 text-white relative overflow-hidden">
+    <!-- Subtle background pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-gold-500/20 to-transparent"></div>
+    </div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="flex gap-8 py-20 lg:py-32 items-center justify-center flex-col">
+        
+        <!-- Badge -->
+        <div>
+          <button class="inline-flex items-center gap-4 bg-gold-500/20 text-gold-100 hover:bg-gold-500/30 border border-gold-400/40 px-5 py-3 rounded-full text-sm font-medium transition shadow-lg backdrop-blur">
+            When doctors say "it's just aging"
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Main Heading with Animation -->
+        <div class="flex gap-4 flex-col">
+          <h1 class="text-5xl md:text-7xl max-w-4xl tracking-tighter text-center font-regular">
+            <span class="text-white">Menopause care that's</span>
+            <div class="word-container text-center md:pb-4 md:pt-1">
+              <span id="animated-word" class="animated-word font-semibold text-gold-400"></span>
+            </div>
+          </h1>
+          <p class="text-lg md:text-xl leading-relaxed tracking-tight text-gray-100 max-w-3xl text-center">
+            Doctor-prescribed hormone therapy delivered to your door. Join 50,000+ women who chose to 
+            feel like themselves again. <strong>No more dismissive doctors. No more suffering in silence.</strong>
+          </p>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button class="inline-flex items-center gap-4 bg-gradient-to-r from-gold-500 to-gold-600 text-navy-900 hover:from-gold-400 hover:to-gold-500 px-8 py-4 text-lg font-bold rounded-full transition shadow-xl hover:shadow-2xl transform hover:scale-105">
+            Take Free Assessment
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </button>
+          <button class="inline-flex items-center gap-4 bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 text-lg font-semibold rounded-full transition backdrop-blur">
+            Talk to a provider
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Trust Indicators -->
+        <div class="flex flex-wrap justify-center gap-8 text-sm text-gray-300 mt-8">
+          <div class="flex items-center gap-2">
+            <div class="flex text-gold-400 text-xs">★★★★★</div>
+            <span>4.9/5 • 50,000+ patients</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span>🏥 Licensed providers in 50 states</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span>🚚 Free shipping nationwide</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Next Steps Section -->
+  <section class="bg-white py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-navy-800 mb-6">
+        ✨ LUXURY NAVY & GOLD THEME
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Premium, sophisticated, and trustworthy. This screams high-end medical care and empowerment.
+      </p>
+      <div class="bg-navy-50 rounded-3xl p-8 shadow-lg max-w-2xl mx-auto border border-gold-200">
+        <h3 class="text-xl font-semibold mb-4 text-navy-800">💎 Premium Features:</h3>
+        <ul class="text-left space-y-2 text-navy-700">
+          <li>✅ <strong>Deep Navy</strong> gradient with gold accents</li>
+          <li>✅ <strong>Luxury Gold</strong> animated text and CTA</li>
+          <li>✅ <strong>Professional</strong> and trustworthy</li>
+          <li>✅ <strong>Subtle textures</strong> and backdrop effects</li>
+          <li>✅ <strong>High-end medical</strong> brand positioning</li>
+        </ul>
+        
+        <div class="mt-6 grid grid-cols-3 gap-4">
+          <div class="bg-navy-800 h-16 rounded-lg flex items-center justify-center text-white text-sm font-semibold">Navy</div>
+          <div class="bg-gold-500 h-16 rounded-lg flex items-center justify-center text-navy-900 text-sm font-semibold">Gold</div>
+          <div class="bg-gray-100 h-16 rounded-lg flex items-center justify-center text-navy-800 text-sm font-semibold">Neutral</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Animated word cycling
+    const words = ["life-changing", "transformative", "empowering", "liberating", "revolutionary"];
+    let currentIndex = 0;
+    const animatedWord = document.getElementById('animated-word');
+    
+    function updateWord() {
+      const word = words[currentIndex];
+      const nextIndex = (currentIndex + 1) % words.length;
+      
+      // Set the current word
+      animatedWord.textContent = word;
+      animatedWord.classList.remove('animate-word-exit-up', 'animate-word-exit-down');
+      animatedWord.classList.add('animate-word-enter');
+      
+      // Schedule the next word change
+      setTimeout(() => {
+        animatedWord.classList.remove('animate-word-enter');
+        animatedWord.classList.add(nextIndex > currentIndex ? 'animate-word-exit-up' : 'animate-word-exit-down');
+        
+        currentIndex = nextIndex;
+        
+        setTimeout(() => {
+          updateWord();
+        }, 400); // Wait for exit animation
+      }, 2000); // Display word for 2 seconds
+    }
+    
+    // Start the animation
+    updateWord();
+  </script>
+
+</body>
+</html>
