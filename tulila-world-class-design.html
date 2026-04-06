@@ -752,20 +752,15 @@
           Take our 2-minute assessment to discover personalized treatment options for your menopause journey.
         </p>
         
-        <!-- Animated Progress Bar -->
-        <div class="flex items-center justify-center gap-4 relative mb-12">
-          <div class="w-2 h-2 rounded-full bg-white relative z-10" id="progress-dot-1"></div>
-          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-2"></div>
-          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-3"></div>
-          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-4"></div>
-          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-5"></div>
-          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-6"></div>
-          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-7"></div>
-          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-8"></div>
-          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-9"></div>
-          
-          <!-- Purple progress overlay -->
-          <div id="progress-bar" class="absolute left-0 top-1/2 transform -translate-y-1/2 h-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full transition-all duration-700 ease-out" style="width: 24px; margin-left: -8px;"></div>
+        <!-- Full Width Progress Bar -->
+        <div class="w-full max-w-xl mx-auto mb-12">
+          <div class="w-full bg-gray-200 rounded-full h-3 relative overflow-hidden">
+            <div id="progress-bar" class="h-full bg-gradient-to-r from-purple-600 to-purple-700 rounded-full transition-all duration-700 ease-out" style="width: 11.11%;"></div>
+          </div>
+          <div class="flex justify-between text-xs text-gray-500 mt-2">
+            <span>Step <span id="current-step">1</span> of 9</span>
+            <span><span id="progress-percentage">11</span>% Complete</span>
+          </div>
         </div>
         
         <!-- Question Container -->
@@ -1029,20 +1024,18 @@
 
     function updateProgress() {
       const progressBar = document.getElementById('progress-bar');
-      const dots = document.querySelectorAll('[id^="progress-dot-"]');
+      const currentStepDisplay = document.getElementById('current-step');
+      const progressPercentageDisplay = document.getElementById('progress-percentage');
       
-      // Update dots
-      dots.forEach((dot, index) => {
-        if (index + 1 <= currentStep) {
-          dot.className = 'w-2 h-2 rounded-full bg-white relative z-10';
-        } else {
-          dot.className = 'w-2 h-2 rounded-full bg-gray-300 relative z-10';
-        }
-      });
+      // Calculate progress percentage (9 total steps)
+      const progressPercentage = Math.round((currentStep / 9) * 100);
       
       // Update progress bar width with animation
-      const widths = ['24px', '48px', '72px', '96px', '120px', '144px', '168px', '192px', '216px'];
-      progressBar.style.width = widths[currentStep - 1] || '24px';
+      progressBar.style.width = progressPercentage + '%';
+      
+      // Update text displays
+      if (currentStepDisplay) currentStepDisplay.textContent = currentStep;
+      if (progressPercentageDisplay) progressPercentageDisplay.textContent = progressPercentage;
     }
 
     function showStep(stepNumber) {
