@@ -762,6 +762,7 @@
           <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-6"></div>
           <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-7"></div>
           <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-8"></div>
+          <div class="w-2 h-2 rounded-full bg-gray-300 relative z-10" id="progress-dot-9"></div>
           
           <!-- Purple progress overlay -->
           <div id="progress-bar" class="absolute left-0 top-1/2 transform -translate-y-1/2 h-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full transition-all duration-700 ease-out" style="width: 24px; margin-left: -8px;"></div>
@@ -868,8 +869,39 @@
             </button>
           </div>
 
-          <!-- Step 4: Symptom Severity -->
+          <!-- Step 4: Most Bothersome Symptoms -->
           <div id="step-4" class="assessment-step hidden">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-8">What are your most bothersome symptoms?</h3>
+            <p class="text-gray-600 mb-6 text-center">Select all that significantly impact your daily life</p>
+            <div class="grid grid-cols-1 gap-4">
+              <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-purple-300 hover:bg-purple-50 transition">
+                <input type="checkbox" class="mr-3 w-5 h-5 text-purple-600" value="hot-flashes-sweats">
+                <span class="text-lg">🔥 Hot flashes & night sweats</span>
+              </label>
+              <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-purple-300 hover:bg-purple-50 transition">
+                <input type="checkbox" class="mr-3 w-5 h-5 text-purple-600" value="sleep-problems">
+                <span class="text-lg">😴 Sleep problems</span>
+              </label>
+              <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-purple-300 hover:bg-purple-50 transition">
+                <input type="checkbox" class="mr-3 w-5 h-5 text-purple-600" value="mood-anxiety">
+                <span class="text-lg">😔 Mood changes & anxiety</span>
+              </label>
+              <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-purple-300 hover:bg-purple-50 transition">
+                <input type="checkbox" class="mr-3 w-5 h-5 text-purple-600" value="energy-brain-fog">
+                <span class="text-lg">⚡ Low energy & brain fog</span>
+              </label>
+              <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-purple-300 hover:bg-purple-50 transition">
+                <input type="checkbox" class="mr-3 w-5 h-5 text-purple-600" value="other-symptoms">
+                <span class="text-lg">🌸 Other symptoms</span>
+              </label>
+            </div>
+            <button onclick="continueFromBothersome()" class="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white font-bold text-xl py-4 rounded-full hover:from-purple-700 hover:to-purple-800 transition mt-8">
+              Continue →
+            </button>
+          </div>
+
+          <!-- Step 5: Symptom Severity -->
+          <div id="step-5" class="assessment-step hidden">
             <h3 class="text-2xl font-semibold text-gray-900 mb-8">How would you rate the impact of your symptoms on daily life?</h3>
             <div class="space-y-4">
               <button onclick="selectSeverity('mild')" class="w-full p-6 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer">
@@ -887,8 +919,8 @@
             </div>
           </div>
 
-          <!-- Step 5: Duration -->
-          <div id="step-5" class="assessment-step hidden">
+          <!-- Step 6: Duration -->
+          <div id="step-6" class="assessment-step hidden">
             <h3 class="text-2xl font-semibold text-gray-900 mb-8">How long have you been experiencing these symptoms?</h3>
             <div class="space-y-4">
               <button onclick="selectDuration('under-6-months')" class="w-full p-4 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer text-lg">
@@ -906,8 +938,8 @@
             </div>
           </div>
 
-          <!-- Step 6: Previous Treatment -->
-          <div id="step-6" class="assessment-step hidden">
+          <!-- Step 7: Previous Treatment -->
+          <div id="step-7" class="assessment-step hidden">
             <h3 class="text-2xl font-semibold text-gray-900 mb-8">Have you tried hormone therapy before?</h3>
             <div class="grid grid-cols-1 gap-4">
               <button onclick="selectTreatment('never')" class="p-6 text-left border-2 border-gray-200 rounded-xl hover:border-purple-300 hover:bg-purple-50 transition cursor-pointer">
@@ -925,8 +957,8 @@
             </div>
           </div>
 
-          <!-- Step 7: Medical History -->
-          <div id="step-7" class="assessment-step hidden">
+          <!-- Step 8: Medical History -->
+          <div id="step-8" class="assessment-step hidden">
             <h3 class="text-2xl font-semibold text-gray-900 mb-8">Do you have any of the following medical conditions?</h3>
             <p class="text-gray-600 mb-6 text-center">Select all that apply (or none if not applicable)</p>
             <div class="grid grid-cols-1 gap-4">
@@ -956,8 +988,8 @@
             </button>
           </div>
 
-          <!-- Step 8: Contact Info -->
-          <div id="step-8" class="assessment-step hidden">
+          <!-- Step 9: Contact Info -->
+          <div id="step-9" class="assessment-step hidden">
             <h3 class="text-2xl font-semibold text-gray-900 mb-8">Get your personalized treatment plan</h3>
             <div class="space-y-6 text-left">
               <div>
@@ -1009,7 +1041,7 @@
       });
       
       // Update progress bar width with animation
-      const widths = ['24px', '48px', '72px', '96px', '120px', '144px', '168px', '192px'];
+      const widths = ['24px', '48px', '72px', '96px', '120px', '144px', '168px', '192px', '216px'];
       progressBar.style.width = widths[currentStep - 1] || '24px';
     }
 
@@ -1026,7 +1058,7 @@
     }
 
     function goToNextStep() {
-      if (currentStep < 8) {
+      if (currentStep < 9) {
         currentStep++;
         updateProgress();
         showStep(currentStep);
@@ -1057,6 +1089,12 @@
       goToNextStep();
     }
 
+    function continueFromBothersome() {
+      const checkboxes = document.querySelectorAll('#step-4 input[type="checkbox"]:checked');
+      assessmentData.bothersomeSymptoms = Array.from(checkboxes).map(cb => cb.value);
+      goToNextStep();
+    }
+
     function selectSeverity(severity) {
       assessmentData.severity = severity;
       goToNextStep();
@@ -1073,7 +1111,7 @@
     }
 
     function continueFromMedical() {
-      const checkboxes = document.querySelectorAll('#step-7 input[type="checkbox"]:checked');
+      const checkboxes = document.querySelectorAll('#step-8 input[type="checkbox"]:checked');
       assessmentData.medicalHistory = Array.from(checkboxes).map(cb => cb.value);
       goToNextStep();
     }
