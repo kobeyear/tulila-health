@@ -560,7 +560,7 @@
               <button class="option-button medical-option" onclick="toggleMedical(this, 'none')">None of the above</button>
             </div>
             
-            <button class="continue-button" id="step6Continue" onclick="nextStep()">Continue</button>
+            <button class="continue-button" id="step6Continue" onclick="nextStep()" style="background: linear-gradient(90deg, #7c3aed, #a855f7); cursor: pointer;">Continue</button>
           </div>
 
           <!-- Step 7: Lead Capture -->
@@ -644,6 +644,11 @@
       currentStepNum++;
       document.getElementById('step' + currentStepNum).classList.remove('hidden');
       updateProgress();
+      
+      // Enable step 6 continue button when it's shown
+      if (currentStepNum === 6) {
+        document.getElementById('step6Continue').disabled = false;
+      }
     }
     
     function selectAge(age) {
@@ -717,6 +722,9 @@
           assessmentData.medicalHistory.push(condition);
         }
       }
+      
+      // Always enable the continue button for step 6
+      document.getElementById('step6Continue').disabled = false;
     }
     
     function submitAssessment() {
@@ -748,6 +756,10 @@
       // Reset all forms
       document.querySelectorAll('.option-button').forEach(btn => btn.classList.remove('selected'));
       document.querySelectorAll('.continue-button').forEach(btn => btn.disabled = true);
+      
+      // Step 6 continue button should always be enabled
+      document.getElementById('step6Continue').disabled = false;
+      
       document.querySelectorAll('.step').forEach(step => step.classList.add('hidden'));
       document.getElementById('step1').classList.remove('hidden');
       
