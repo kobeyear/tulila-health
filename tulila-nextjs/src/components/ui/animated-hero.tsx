@@ -41,7 +41,7 @@ function AnimatedHero() {
           {/* Badge */}
           <div>
             <Button variant="outline" size="sm" className="gap-4 bg-white/80 text-purple-700 hover:bg-white/90 border-purple-200 backdrop-blur">
-              When doctors say "it's just aging"
+              When doctors say &ldquo;it&rsquo;s just aging&rdquo;
               <MoveRight className="w-4 h-4" />
             </Button>
           </div>
@@ -49,7 +49,7 @@ function AnimatedHero() {
           {/* Main Heading with Animation */}
           <div className="flex gap-4 flex-col text-center">
             <h1 className="text-5xl md:text-7xl max-w-4xl tracking-tighter text-center font-regular">
-              <span className="text-gray-900">Menopause care that's</span>
+              <span className="text-gray-900">Menopause care that&rsquo;s</span>
               <div className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1 h-[1.2em]">
                 {titles.map((title, index) => (
                   <motion.span
