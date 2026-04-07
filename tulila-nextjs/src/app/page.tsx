@@ -1,9 +1,15 @@
 import { AnimatedHero } from "@/components/ui/animated-hero";
+import { TestSupabase } from "@/components/test-supabase";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <AnimatedHero />
+      
+      {/* Temporary Supabase test */}
+      <div className="container mx-auto px-6 py-8">
+        <TestSupabase />
+      </div>
       
       {/* World-Class Design Preview */}
       <section className="bg-white py-20 px-4">
