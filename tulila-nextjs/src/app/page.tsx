@@ -1,4 +1,5 @@
 import { AnimatedHero } from "@/components/ui/animated-hero";
+import { MenopauseAssessment } from "@/components/menopause-assessment";
 import { DatabaseTest } from "@/components/database-test";
 
 export default function Home() {
@@ -6,8 +7,29 @@ export default function Home() {
     <main className="min-h-screen">
       <AnimatedHero />
       
-      {/* Database functionality test */}
-      <div className="container mx-auto px-6 py-8">
+      {/* Menopause Assessment - Core Product Feature */}
+      <section id="assessment" className="bg-gray-50 py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Take Your <span className="text-purple-600">Free Assessment</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Get personalized insights about your menopause symptoms and discover if hormone therapy is right for you. 
+              Takes 2-3 minutes, completely confidential.
+            </p>
+          </div>
+          
+          <MenopauseAssessment />
+        </div>
+      </section>
+      
+      {/* Database functionality test - Development Only */}
+      <div className="container mx-auto px-6 py-8 bg-gray-100">
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-semibold text-gray-700 mb-2">🔧 Development Tools</h3>
+          <p className="text-gray-600">Database testing interface for development</p>
+        </div>
         <DatabaseTest />
       </div>
       
