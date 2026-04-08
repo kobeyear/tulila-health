@@ -429,12 +429,43 @@ export function MenopauseAssessment() {
           </div>
 
           <div className="text-center">
-            <button className="bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold px-8 py-4 rounded-full hover:from-purple-700 hover:to-purple-800 transition shadow-lg">
+            <button 
+              onClick={() => {
+                // For now, just show an alert - replace with actual booking system
+                alert('Great! Your assessment is complete. Our team will contact you within 24 hours to schedule your free consultation.\n\nWe\'ll reach out to: ' + formData.email);
+              }}
+              className="bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold px-8 py-4 rounded-full hover:from-purple-700 hover:to-purple-800 transition shadow-lg"
+            >
               Book Free Consultation
             </button>
             <p className="text-sm text-gray-500 mt-3">
               Speak with a menopause specialist about your results
             </p>
+            
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <button 
+                onClick={() => {
+                  // Reset the assessment to try again
+                  setCurrentStep(1);
+                  setFormData({
+                    age_range: '',
+                    menstrual_status: '',
+                    symptoms: [],
+                    symptom_severity: '',
+                    previous_treatments: [],
+                    medical_history: [],
+                    first_name: '',
+                    email: '',
+                    phone: ''
+                  });
+                  setResults(null);
+                  setError('');
+                }}
+                className="text-purple-600 hover:text-purple-700 font-medium text-sm"
+              >
+                ← Take Assessment Again
+              </button>
+            </div>
           </div>
         </div>
       </div>
