@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getSupabaseAdmin } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase-simple';
 
 export async function POST(request: NextRequest) {
   try {
@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     const userAgent = request.headers.get('user-agent') || '';
     
     // Get Supabase admin client
-    const supabaseAdmin = getSupabaseAdmin();
+    const supabaseAdmin = supabase;
     if (!supabaseAdmin) {
       return NextResponse.json(
         { error: 'Database not configured' },
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
 export async function GET() {
   try {
     // Get Supabase admin client
-    const supabaseAdmin = getSupabaseAdmin();
+    const supabaseAdmin = supabase;
     if (!supabaseAdmin) {
       return NextResponse.json(
         { error: 'Database not configured' },
